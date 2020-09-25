@@ -12,7 +12,7 @@ int main()
     for(i--;i>-1;i--)
         cout << arr[i] <<' ';
     
-      
+      //hi 
 
     return 0;
 }
