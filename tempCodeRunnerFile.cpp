@@ -1,1 +1,2 @@
-    printf("請輸入一個十進位制整數：\n");
+A[minP] = A[i];
+        A[i] = min;

@@ -1,13 +1,9 @@
 #include <iostream>
 #include <string.h>
-#include <cmath>
+#include <array>
 using namespace std;
 int main(){
-    long long int a,ans;
-    cin >> a;
-    ans = pow(a,2);
-    printf("%d\n",ans);
-    ans = a*a;
-    printf("%d",ans);
+    int a[6];
+    cout << a.size();
         
 }
