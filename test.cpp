@@ -1,15 +1,45 @@
-#include <iostream>
-using namespace std;
-
+#include <stdio.h>
+#include <cmath>
 
 int main()
 {
-    char c;
-    while(cin >> c){
-        if(c == cin.eof()) break;
-        cout << c << endl;
-    }
-    cout << "out!";
+    int top, bottom;
 
-    return 0;
+    scanf("%d %d", &top, &bottom);
+
+    if (top > bottom)
+    {
+        int space = 0;
+        int row = top / 2 - bottom / 2 + 1;
+        for (int j = 0; j < row; j++)
+        {
+            for (int i = 0; i < space; i++)
+            {
+                printf(" ");
+            }
+            for (int i = 0; i < top; i++)
+            {
+                printf("*");
+            }
+            printf("\n");
+            space++;
+            top -= 2;
+        }
+    }
+    else
+    {
+        int space = bottom / 2 - top / 2;
+        int row = space + 1;
+        for (int j = 0; j < row; j++)
+        {
+            for (int i = 0; i < space; i++)
+                printf(" ");
+            for (int i = 0; i < top; i++)
+                printf("*");
+
+            space--;
+            top += 2;
+            printf("\n");
+        }
+    }
 }
