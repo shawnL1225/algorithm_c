@@ -1,3 +1,4 @@
+/* probID: MT2A-7-Merge-Sorted-Arrays */
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -5,7 +6,37 @@ int N[35];
 int arrays[35][10000000];
 int *ptr_arrays[35];
 int merged[30000000];
-void merge(int n,int N[],int *arrays[],int merged[]);
+
+void merge(int n, int N[], int *array[],int merged[])
+{
+
+    int p[35] = {0};
+    int arr_push,sum=0;
+
+    for(int i=0;i<n;i++)
+        sum += N[i];
+    
+
+    for(int j=0;j<sum;j++){
+        
+        int smalliest = 2e8;
+        for(int i=0;i<n;i++){
+            if(p[i]>=N[i]) continue;
+
+            if(array[i][p[i]]<smalliest){
+                smalliest = array[i][p[i]];
+                arr_push = i;
+            }
+        }
+        merged[j] = smalliest;
+        p[arr_push]++;
+
+       
+    }
+    
+    
+    
+}
 int main(){
     int i,j,n,sum=0;
     scanf("%d",&n);
@@ -29,28 +60,3 @@ int main(){
     return 0;
 }
 
-void merge(int n, int N[], int *array[],int merged[])
-{
-    int p[n] = {0};
-    int arr_push,sum=0;
-
-    for(int i=0;i<n;i++)
-        sum += N[i];
-    
-
-    for(int j=0;j<sum;j++){
-        
-        int smalliest = 1e8;
-        for(int i=0;i<n;i++){
-            if(p[i]>=N[i]) continue;
-
-            if(array[i][p[i]]<smalliest){
-                smalliest = array[i][p[i]];
-                arr_push = i;
-            }
-        }
-        merged[j] = smalliest;
-        p[arr_push]++;
-    }
-    
-}
