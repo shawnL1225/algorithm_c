@@ -59,16 +59,16 @@ void read_number()
     }
     printf("\n");
 }
-// void read_punc()
-// {
-//     char c = my_getchar();
-//     printf("%c\n",c);
-// }
-// void read_operator()
-// {
-//     char c = my_getchar();
-//     printf("%c\n",c);
-// }
+void read_punc()
+{
+    char c = my_getchar();
+    printf("%c\n",c);
+}
+void read_operator()
+{
+    char c = my_getchar();
+    printf("%c\n",c);
+}
 int main(){
     char c;
     while(1)
@@ -84,7 +84,7 @@ int main(){
         else if(isdigit(c)) 
             read_number();
         // else if(c== '+'||c=='-'||c=='*'||c== '/'||c=='('||c==')') 
-        //     read_operator();
+            // read_operator();
         else
             read();
     }
