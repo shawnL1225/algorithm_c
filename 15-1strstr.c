@@ -1,32 +1,32 @@
 /*  probID: 15-1-StringString  */
-// #include <stdio.h>
+#include <stdio.h>
 #include <string.h>
 
-// char *StringString(const char*, const char*);
+char *StringString(const char*, const char*);
 
-// int main()
-// {
-//     char str[10000], substr[10000];
-//     char *ptr;
+int main()
+{
+    char str[10000], substr[10000];
+    char *ptr;
     
-//     fgets(str, 10000, stdin);
-//     fgets(substr, 10000, stdin);
+    fgets(str, 10000, stdin);
+    fgets(substr, 10000, stdin);
     
-//     if(substr[strlen(substr) - 1] == '\n')
-//         substr[strlen(substr) - 1] = '\0';
+    if(substr[strlen(substr) - 1] == '\n')
+        substr[strlen(substr) - 1] = '\0';
     
-//     ptr = StringString(str, substr);
+    ptr = StringString(str, substr);
     
-//     while(ptr)
-//     {
-//         printf("%s", ptr);
+    while(ptr)
+    {
+        printf("%s", ptr);
         
-//         ptr += strlen(substr);
-//         ptr = StringString(ptr, substr);
-//     }
+        ptr += strlen(substr);
+        ptr = StringString(ptr, substr);
+    }
     
-//     return 0;
-// }
+    return 0;
+}
 char *StringString( const char *str, const char *substr )
 {
     int len = strlen(str);
