@@ -5,15 +5,6 @@ map<string, int> mapStudent;
 int n,m;
 string command,tok;
 stringstream ss;
-// struct Student {
-//     int ID;
-//     string Name;
-//     int Sid;
-//     char Class;
-//     string Email;
-//     int Phone;
-// };
-
 string tableA[302][6];
 
 struct condition
@@ -36,13 +27,9 @@ struct WHERE_CLAUSE
     int type_of_connector = 0;  // 1 for AND;  0 for OR
 };
 
-#define SQL_TYPE_SELECT 0
-#define SQL_TYPE_DELETE 1
 
 struct SQL
 {
-    int type;   // 0 for SELECT;  1 for DELETE;
-
     // column list
     struct COLUMN_LIST col_list;
 
@@ -125,24 +112,12 @@ void sel_input(){
     }
     
 }
-void del_input(){
-    ;
-}
-bool comp(string s1[6],string s2[6])
-{
-    if(sql_each[sql_ct].flag_inc == 0)  
-        return s1[mapStudent[sql_each[sql_ct].order_by_col]] < s2[mapStudent[sql_each[sql_ct].order_by_col]];
-    else
-        return s1[mapStudent[sql_each[sql_ct].order_by_col]] > s2[mapStudent[sql_each[sql_ct].order_by_col]];
-}
-void execute_sel(){
-    // cout << "sql col: " << sql_each[sql_ct].col_list.cols[0] << endl;
-    // cout << "sql where: " << sql_each[sql_ct].where_clause.conditions[0].column << endl;
-    // cout << "sql where: " << sql_each[sql_ct].where_clause.conditions[0].optr << endl;
-    // cout << "sql where: " << sql_each[sql_ct].where_clause.conditions[0].value << endl;
-    // cout << mapStudent["Class"] <<endl;
 
-    bool condition_result[300][2];
+bool final_cs[301];
+void exe_condition(){
+    memset(final_cs,1,sizeof(final_cs));
+
+    bool condition_result[300][1000];
     memset(condition_result,0,sizeof(condition_result));
     
     for(int condition_i=0; condition_i < sql_each[sql_ct].where_clause.num_of_conditions; condition_i++)
@@ -222,24 +197,40 @@ void execute_sel(){
     // cout << endl;
 
     //AND OR compute
-    bool final_cs[n];
-    memset(final_cs,1,sizeof(final_cs));
-
+    
     if(sql_each[sql_ct].where_clause.num_of_conditions > 0)
     {
         if(sql_each[sql_ct].where_clause.type_of_connector == 1)
         {
-            for(int i=0;i<n;i++)
-                final_cs[i] = condition_result[i][0] && condition_result[i][1];
+            for(int j=0; j<sql_each[sql_ct].where_clause.num_of_conditions ;j++)
+            {
+                for(int i=0;i<n;i++)
+                    final_cs[i] = final_cs[i] && condition_result[i][j];
+            }
+            
         }
         else
         {
-            for(int i=0;i<n;i++)
-                final_cs[i] = condition_result[i][0] || condition_result[i][1];
+            memset(final_cs,0,sizeof(final_cs));
+            for(int j=0; j<sql_each[sql_ct].where_clause.num_of_conditions ;j++)
+            {
+                for(int i=0;i<n;i++)
+                    final_cs[i] = final_cs[i] || condition_result[i][j];
+            }
         }
     }
-    
-    
+}
+
+bool comp(string s1[6],string s2[6])
+{
+    if(sql_each[sql_ct].flag_inc == 0)  
+        return s1[mapStudent[sql_each[sql_ct].order_by_col]] < s2[mapStudent[sql_each[sql_ct].order_by_col]];
+    else
+        return s1[mapStudent[sql_each[sql_ct].order_by_col]] > s2[mapStudent[sql_each[sql_ct].order_by_col]];
+}
+
+void execute_sel(){
+    exe_condition();
     
     //origin output
 
@@ -258,7 +249,6 @@ void execute_sel(){
     //     }
     //     cout << endl;
     // }
-    
 
     for(int std_i=0; std_i<n;std_i++)
     {
@@ -284,6 +274,48 @@ void execute_sel(){
 
 }
 
+void del_input(){
+    ss >> tok;  //from
+    ss >> tok;  //tableA
+    if(tok[tok.length()-1] !=';')
+    {
+        ss >> tok; //where
+        for(int condition_i=0;condition_i<2;condition_i++)
+        {
+            sql_each[sql_ct].where_clause.num_of_conditions++;
+            ss >> tok;
+            sql_each[sql_ct].where_clause.conditions[condition_i].column = tok;
+            ss >> tok;
+            sql_each[sql_ct].where_clause.conditions[condition_i].optr = tok;
+            ss >> tok;
+            if(tok[tok.length()-1] == ';')
+            {
+                tok.erase(tok.begin()+tok.length()-1);
+                sql_each[sql_ct].where_clause.conditions[condition_i].value = tok;
+                break;
+            }
+            sql_each[sql_ct].where_clause.conditions[condition_i].value = tok;
+
+            ss >> tok;
+            if(tok == "AND")
+                sql_each[sql_ct].where_clause.type_of_connector = 1;
+            else
+                sql_each[sql_ct].where_clause.type_of_connector = 0;
+        }
+    }
+}
+
+void execute_del(){
+    exe_condition();
+    for(int del_i=0; del_i<n;del_i++)
+    {
+        if(final_cs[del_i])
+        {
+            for(int i=0;i<6;i++)
+                tableA[del_i][i] = "";
+        }
+    }
+}
 
 void input()
 {
@@ -304,12 +336,11 @@ void input()
         ss >> tok;
         if(tok == "SELECT"){
             sel_input();
-            sql_each[sql_ct].type = SQL_TYPE_SELECT;
             execute_sel();
         }
         else if(tok == "DELETE"){
             del_input();
-            sql_each[sql_ct].type = SQL_TYPE_DELETE;
+            execute_del();
         }
 
         
