@@ -17,7 +17,7 @@ int main()
             }
         }
 
-        for(int i=0; i<len; i++){18
+        for(int i=0; i<len; i++){
             if(input[i] == '*') continue;
             
             for(int j=0; j<len; j++){
