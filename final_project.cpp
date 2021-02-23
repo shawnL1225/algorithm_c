@@ -43,6 +43,7 @@ struct SQL
 };
 SQL sql_each[30];
 int sql_ct = 0;
+
 void sel_input(){
     int i=0;
     while(ss >> tok)
