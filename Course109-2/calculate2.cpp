@@ -45,15 +45,13 @@ int expr_evaluation(int n, int type[], int integers[], char symbols[]){
 int rec(int b, int e, int integers[], char symbols[]){
 
     if(b == e) return integers[b];
-    // if(symbols[b] == '(' && symbols[e] == ')'){
-    //     b++;e--;
-    // }
-    int param = 0;
+    //confirm all in paren
+    int paren = 0;
     int ctOutside=0;
     for(int i = e;i>=b;i--){
-        if(symbols[i] == ')') param++;
-        else if(symbols[i] == '(') param--;
-        else if(param == 0)ctOutside++;
+        if(symbols[i] == ')') paren++;
+        else if(symbols[i] == '(') paren--;
+        else if(paren == 0)ctOutside++;
     }
     if(ctOutside == 0 && symbols[b] == '(' && symbols[e] == ')') {
         b++; e--;
@@ -61,20 +59,20 @@ int rec(int b, int e, int integers[], char symbols[]){
     
     int segment=-1;
     for(int i = e;i>=b;i--){
-        if(symbols[i] == ')') param++;
-        else if(symbols[i] == '(') param--;
+        if(symbols[i] == ')') paren++;
+        else if(symbols[i] == '(') paren--;
 
-        if(param==0 && (symbols[i] == '+' || symbols[i]== '-')){
+        if(paren==0 && (symbols[i] == '+' || symbols[i]== '-')){
             segment = i;
             break;
         }
     }
     if(segment == -1){
         for(int i = e;i>=b;i--){
-            if(symbols[i] == ')') param++;
-            else if(symbols[i] == '(') param--;
+            if(symbols[i] == ')') paren++;
+            else if(symbols[i] == '(') paren--;
 
-            if(param==0 && (symbols[i] == '*' || symbols[i]== '/')){
+            if(paren==0 && (symbols[i] == '*' || symbols[i]== '/')){
                 segment = i;
                 break;
             }
