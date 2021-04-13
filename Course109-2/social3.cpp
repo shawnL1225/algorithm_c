@@ -12,9 +12,8 @@ int dfs(int now,int dest){
     
     for(int i=0;i<len;i++)
     {
-        if(connected) break;
+        //if(connected) break;
 
-        
         if(!isWalk[net[now][i]]) {
 
             if(dest == net[now][i]) {
@@ -30,9 +29,7 @@ int dfs(int now,int dest){
                 else
                     step.pop_back();
             }
-                
         }
-
     }
     return 0;
 }

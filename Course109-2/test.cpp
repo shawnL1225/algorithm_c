@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    int i;
-    i = sqrt(10);
-    cout << i;
+    
+    if(1==0==1){
+        cout <<'h';
+    }
 }

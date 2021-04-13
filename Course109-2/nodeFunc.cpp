@@ -143,8 +143,7 @@ node *list_search(node *POS, int val){
     if(POS->value == val) return POS;
     if(POS->NEXT != NULL) 
         return list_search(POS->NEXT,val);
-    else 
-        return NULL;
+    
 }
 node *list_insert_before(node *HEAD, node *POS, int val){
     node *ins;
