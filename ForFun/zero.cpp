@@ -1,18 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
+ 
 int main(){
-    string s;
-    cin >> s;
-    set<char> vow;
-    vow.insert('A');vow.insert('a');
-    vow.insert('E');vow.insert('e');
-    vow.insert('I');vow.insert('i');
-    vow.insert('O');vow.insert('o');
-    vow.insert('U');vow.insert('u');
-    vow.insert('Y');vow.insert('y');
-    for(int i=0;i<s.length();i++){
-        if(vow.count(s[i]) == 0){
-            cout << '.'<< (char)tolower(s[i]);
-        }
-    }
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  string s;
+  cin>>s;
+  sort(s.begin(),s.end());
+  cout <<s<<endl;
+  for(int i=0;i<s.size()-1;i++){
+    if(s[i]=='+') continue;
+    else cout<<s[i]<<"+";
+  }
+  cout<<s[s.size()-1];
+  return 0;
 }
