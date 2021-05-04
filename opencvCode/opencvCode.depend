@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1620061826 source:c:\users\user\documents\cfile\opencvcode\main.cpp
+	<cstdio>
+	<opencv2/opencv.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+
