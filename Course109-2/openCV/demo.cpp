@@ -73,6 +73,7 @@ int main(){
     //scalar (0,0,0) 黑色
     //int thickness = 3 (線條寬度，負數表示填滿圖形)
     putText(img, std::string("OpenCV"), Point(280,280), 0, 1, Scalar(0,0,0),3);
+    putText(img, std::string("409410003"), Point(300,400), 0, 1, Scalar(0,0,0),3);
  
     imshow("window", img);
     waitKey(0); 
