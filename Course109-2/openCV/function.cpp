@@ -50,7 +50,7 @@ int main(){
     for(double t=0; t<=2*pi; t+=0.001){
         int y = 250 + a*sin(t) ;
         int x = 250 + b*cos(c*t);
-        circle(img, Point(y,x), 3, Scalar(0,255,0), -1);
+        circle(img, Point(y,x), 2, Scalar(0,255,0), -1);
     }
     imshow("img", img);
 
