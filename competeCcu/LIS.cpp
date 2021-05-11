@@ -8,6 +8,7 @@ int main(){
     for(int i=0;i<n;i++){
         cin >> num;
         int p = lower_bound(arr.begin(),arr.end(),num)- arr.begin();
+        // cout << p <<' ';
         if(p >= arr.size())
             arr.push_back(num);
         else

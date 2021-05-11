@@ -13,6 +13,8 @@ bool arrive(long long int day){
     //cout << day << "step" << step <<endl;
     return step >= x;
 }
+
+
 int main(){
     cin >> n >> s >> x;
     for(int i=0;i<n;i++){

@@ -17,11 +17,11 @@ int main(){
     while(k--){
         queue<int> Q;
         memset(walked,0,sizeof(walked));
+
         cin >> a >> b;
         Q.push(a);
-        
-        
         walked[a] = 1;
+        
         while(!Q.empty()){
             int num = Q.front();
             Q.pop();

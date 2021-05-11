@@ -1,32 +1,27 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int arr[100005];
+
 int main(){
-    int n, num, left=1, right, max=-1e8, ctseg=1;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    int n, maxsum = -2000000, maxx, maxy, x = 1, y = 1, sum = 0, rec;
     cin >> n;
-    int leftSeg=1;
+    for(int i = 1; i <= n; i++){
+        y = i;
+        cin >> rec;
+        sum += rec;
 
-    bool inSeg=1;
-    for(int i=1;i<=n;i++){
-        cin >> num;
-        arr[i] = arr[i-1] + num;
-
-        if(arr[i] > max){
-            max = arr[i];
-            left = leftSeg;
-            right = i;
+        if(sum > maxsum){
+            maxsum = sum;
+            maxx = x;
+            maxy = y;
         }
 
-        if(arr[i]<0){
-            arr[i] = 0;
-            inSeg = 0;
-        }else{
-            if(!inSeg){
-                leftSeg = i;
-                inSeg = 1;
-            }
+        if(sum < 0){
+            x = i + 1;
+            sum = 0;
         }
     }
-    cout << left << ' ' << right << endl;
-    cout <<max <<endl;
+    cout << maxx << " " << maxy << "\n" << maxsum << "\n";
+    return 0;
 }

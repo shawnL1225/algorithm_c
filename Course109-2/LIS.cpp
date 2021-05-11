@@ -14,4 +14,7 @@ int main(){
             arr[p] = num;
     }
     cout << arr.size();
+    for(auto x : arr){
+        cout << x << ' ';
+    }
 }

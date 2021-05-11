@@ -1,55 +1,46 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-void printBoard(char Board[8][8])
-{
-    static int kase = 0;
-    kase++;
-    cout << endl << "Case: " << kase << endl;
-    for(int i=0; i<8; i++)
-    {
-        for(int j=0; j<8; j++)
-        {
-            cout << Board[i][j];
-        }
-        cout << endl;
-    }
-}
-void placeQueen(char Board[8][8], int row, int colMask, int rdMask, int ldMask)
-{
-    if(row==8)
-    {
-        printBoard(Board);
-        return;
-    }
-    for(int j=0; j<8; j++)
-    {
-        int colIndex = 1<<(7-j);
-        if((colMask|rdMask|ldMask) & colIndex)
-        {
-            continue;
 
-        }
-        else
-        {
-            Board[row][j]='Q';
-            placeQueen(Board, row+1, colMask|colIndex, (rdMask|colIndex)>>1,(ldMask|colIndex)<<1);
-            Board[row][j]='.';
-        }
+typedef long long lint;
+
+int arr[200005] = {0};
+int dfs(int num){
+
+    if(arr[num] != 0){
+        return arr[num];
     }
+
+    if(num<10){
+        arr[num] = num;
+        return num;
+    }
+
+    int newN=1, num2 = num;
+    while(num != 0){
+        newN *= num%10;
+        num/=10;
+    }
+
+    arr[num2] = dfs(newN);
+    return arr[num2];
+
+
 }
-int main()
-{
-    char Board[8][8];
-    for(int i=0; i<8; i++)
-    {
-        for(int j=0; j<8; j++)
-        {
-            Board[i][j] = '.';
+int main(){
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    int n;
+    cin >> n;
+    int l,r,k;
+    while(n--){
+        int ct=0;
+        cin >> l >> r >> k;
+        for(int i=l;i<=r;i++){
+            if(k == dfs(i)) ct++;
         }
+        cout << ct << endl;
     }
-    int colMask = 0;
-    int rdMask = 0;
-    int ldMask = 0;
-    placeQueen(Board, 0, colMask, rdMask, ldMask);
+
+
+
     return 0;
 }
