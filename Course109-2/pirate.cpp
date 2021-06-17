@@ -38,4 +38,4 @@ int main(){
         
     }
     cout << right << endl;
-}
+}0

@@ -67,7 +67,7 @@ int main(){
 
             line(back, Point(p1.x*5+200,p1.y*5+200), Point(p2.x*5+200,p2.y*5+200), Scalar(214, 221, 226), 2); 
             imshow("back", back);
-            waitKey(1000);
+            waitKey(500);
 
             m--;
             ans.pop_back();
@@ -85,7 +85,7 @@ int main(){
 
             line(back, Point(p1.x*5+200,p1.y*5+200), Point(p2.x*5+200,p2.y*5+200), Scalar(255,0,0), 2); 
             imshow("back", back);
-            waitKey(1000);
+            waitKey(500);
         }  
         
 

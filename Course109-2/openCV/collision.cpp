@@ -28,7 +28,7 @@ void draw(){
     
 }
 void move(){
-    int vWei = 1;
+    int vWei = 2;
     for(int i=0; i<ballNum; i++){
         ball[i].px += ball[i].vx*vWei;
         ball[i].py += ball[i].vy*vWei;
@@ -80,14 +80,14 @@ int main(){
         cin >> ball[i].r >> ball[i].m >> ball[i].vx >> ball[i].vy >> ball[i].px >> ball[i].py;
         ball[i].r*=resizeW;  ball[i].px*=resizeW; ball[i].py*=resizeW;
         
-        if(ball[i].py==0) ball[i].py = 40; //easy case
+        if(ball[i].py==0) ball[i].py = 75; //easy case
     }
     width*=resizeW; height*=resizeW; 
-    if(height == 0) height = 80; //easy case
+    if(height == 0) height = 150; //easy case
 
     while(1){
         draw();
-        waitKey(1);
+        waitKey(10);
         move();
         collid();
     }

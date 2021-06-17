@@ -105,5 +105,3 @@ int main(){
         setMouseCallback("ooxx", On_mouse, 0);
 
         waitKey(0);
-    }
-}
