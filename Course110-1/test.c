@@ -6,8 +6,5 @@ void swapStrings(char** a, char** b){
     
 }
 int main(){
-    char* x = "Hello";
-    char* y = "world";
-    swapStrings(&x, &y);
-    printf("%s" , x);
+    if(-1) printf("he");
 }
