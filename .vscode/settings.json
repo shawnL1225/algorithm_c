@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "bit": "c",
+        "*.tcc": "c",
+        "cmath": "c",
+        "complex": "c",
+        "random": "c",
+        "iomanip": "cpp",
+        "istream": "cpp",
+        "unordered_map": "c",
+        "unordered_set": "c"
+    }
+}

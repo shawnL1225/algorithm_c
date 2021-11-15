@@ -18,7 +18,7 @@ int main(){
         while(ss>>num) coo1.push_back(abs(num));
         getline(cin, s1);
         ss.clear(); ss << s1;
-        while(ss>>num) coo2.push_back(abs(num);
+        while(ss>>num) coo2.push_back(abs(num));
         
         sort(coo1.begin(),coo1.end());
         sort(coo2.begin(),coo2.end());
