@@ -1,10 +1,13 @@
+	
 #include<stdio.h>
-void swapStrings(char** a, char** b){
-    char *temp = *a;
-    *a = *b;
-    *b = temp;
-    
-}
 int main(){
-    if(-1) printf("he");
+ 
+    float money;
+    float day;
+    scanf("%f %f", &money, &day);
+ 
+    for(int i =1; i<=day; ++i){
+        money=money*1.00054;
+    }
+    printf("%f\n", money);
 }

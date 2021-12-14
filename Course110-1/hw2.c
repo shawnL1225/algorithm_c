@@ -1,5 +1,4 @@
-#include<stdio.h>
-// C program for array implementation of queue
+#include <stdio.h>
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -140,7 +139,7 @@ int main(){
     }
 
 
-    //interate every node to find shortest path to root
+    //iterate every node to find shortest path to root
     for(int i=num_node-1; i>=1; i--){
         if(inTree[i]) continue;
 
@@ -156,9 +155,9 @@ int main(){
 
         //trace the path from i to root, and connect each node 
         int trace = 0;
-        // printf("trace: \n");
+        printf("trace: \n");
         while(prev[trace]){
-            // printf("%d ", trace);
+            printf("%d ", trace);
             int next = prev[trace];
             if(next == -1) break;
             //construct tree (child)
@@ -168,17 +167,17 @@ int main(){
             parent[next] = trace;
             trace = next; //find next trace node
         }
-        // printf("\n");
+        printf("\n");
     }
 
     //DFS to count total cost
     memset(visited, 0, sizeof(visited));
     DFS(0);
-    // printf("total cost:%d", total_cost);
+    printf("%d %d\n",num_node, total_cost);
 
     for(int i=0;i<num_node;i++){
         printf("%d %d\n",i, parent[i]);
     }
-
+    // if(total_cost<17730) printf("h");
 
 }
