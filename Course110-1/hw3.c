@@ -17,10 +17,10 @@ typedef struct
 }Link;
 Link links[100000];
 
-int node_num, link_num;
+int node_num, link_num; //input variable
 double power, biasc_noise;
 
-int choosenLink_num = 0;
+int choosenLink_num = 0; 
 int choosenTransmits[100000];
 Link choosenLinks[100000];
 
@@ -34,12 +34,12 @@ double distance(Node node1, Node node2){ //count distance of two nodes
     return sqrt(square(node1.x - node2.x) + square(node1.y - node2.y));
 }
 
-double sinr(Node receive, Node transmit){
-    double interferenceSum = 0;
-    for(int i=0;i<choosenLink_num;i++){ //sum up denominator of sinr
+double sinr(Node receive, Node transmit){ //calculate sinr
+    double interferenceSum = 0; 
+    for(int i=0;i<choosenLink_num;i++){ // iterate each choosen transmit nodes
         Node interTransNode = nodes[choosenTransmits[i]];
         if(interTransNode.id == transmit.id) continue; // if it is mainTransmit, skip
-        interferenceSum += power/cube(distance(interTransNode, receive));
+        interferenceSum += power/cube(distance(interTransNode, receive));//sum up denominator of sinr
     }
     double mainTransmit = power/cube(distance(transmit, receive)); // numerator of sinr
     return mainTransmit/(interferenceSum + biasc_noise);
@@ -54,10 +54,10 @@ int checkAffect(){
     return 1;
 }
 
-int compare(const void *a, const void *b){
-    Link *node1 = (Link*)a;
+int compare(const void *a, const void *b){ //qsort compare function
+    Link *node1 = (Link*)a; 
     Link *node2 = (Link*)b;
-    if (node1->distance < node2->distance )
+    if (node1->distance < node2->distance ) //compare the distance of nodes
         return -1;
     else if (node1->distance > node2->distance )
         return 1;
@@ -79,7 +79,7 @@ int main(){
 
     qsort(links,link_num,sizeof(links[0]), compare); 
 
-    for(int i=0; i<link_num; i++){
+    for(int i=0; i<link_num; i++){ //iterate every links
         Link l = links[i]; 
         //if the node has been choosen, skip
         if(nodes[l.node1].isChoosen == 1 || nodes[l.node2].isChoosen == 1){ 
@@ -91,14 +91,14 @@ int main(){
         if(!checkAffect(nodes[l.node2])){
             choosenLink_num--;
         }else{
-            nodes[l.node1].isChoosen = 1;
+            nodes[l.node1].isChoosen = 1; //set the two node states 
             nodes[l.node2].isChoosen = 1;
         }
     }
 
-    printf("%d\n", choosenLink_num);
+    printf("%d\n", choosenLink_num); //print ans
     for(int i=0;i<choosenLink_num;i++){
         printf("%d %d %d\n", choosenLinks[i].id, choosenLinks[i].node1,  choosenLinks[i].node2);
-    }gi
+    }
 
 }
