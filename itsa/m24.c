@@ -1,11 +1,19 @@
-#include <stdio.h>
-int main(){
-    int n;
-    while (scanf("%d", &n) != EOF){
-        long long sum=0;
-        while(n--){
-            if(n % 3 == 0) sum +=n;
-        }
-        printf("%ld\n", sum);
-    }
+#include <stdio.h>  
+int main(){  
+    int a,b;  
+    while(scanf("%d%d", &a, &b) != EOF){  
+        double pay =0;  
+        if(a >=121){  
+            pay += (a-120)*b*1.66;  
+            a=120;  
+        }  
+        if(a>60){  
+            pay += (a-60)*b*1.33;  
+            a = 60;  
+        }  
+        pay += a*b;  
+        printf("%.1lf\n", pay);  
+  
+    }  
+      
 }
