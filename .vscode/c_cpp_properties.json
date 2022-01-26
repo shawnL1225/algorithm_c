@@ -8,7 +8,6 @@
                 "C:/opencv/build/include/opencv2",
                 "C:/opencv/build/bin",
                 "C:/opencv/build/lib"
-
             ],
             "defines": [
                 "_DEBUG",
@@ -18,7 +17,8 @@
             "windowsSdkVersion": "10.0.18362.0",
             "compilerPath": "C:/TDM-GCC-64/bin/g++.exe",
             "cppStandard": "c++17",
-            "intelliSenseMode": "${default}"
+            "intelliSenseMode": "${default}",
+            "cStandard": "c99"
         }
     ],
     "version": 4
