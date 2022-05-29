@@ -8,6 +8,7 @@
         "iomanip": "cpp",
         "istream": "cpp",
         "unordered_map": "c",
-        "unordered_set": "c"
+        "unordered_set": "c",
+        "new": "cpp"
     }
 }

@@ -41,7 +41,7 @@ int main(){
   }
   
   int dis[dstNum][nodesNum];
-  //each dst do a bellman ford - old weight
+    //each dst do a bellman ford - old weight
   for(int i=0;i<dstNum;i++){
     for(int j=0;j<nodesNum;j++){ //init dis with max int
       dis[i][j] = 0x3f3f3f3f;
@@ -78,8 +78,9 @@ int main(){
           dis[i][l.node2] = dis[i][l.node1] + l.neww;
           nodes[l.node2].next_new[dstId[i]] = l.node1;
         }else if(dis[i][l.node2] == dis[i][l.node1] + l.neww){ 
-          if(nodes[l.node2].next_new[dstId[i]] > l.node1)
-           nodes[l.node2].next_new[dstId[i]] = l.node1;
+          if(nodes[l.node2].next_new[dstId[i]] > l.node1){
+            nodes[l.node2].next_new[dstId[i]] = l.node1;
+          } 
         }
       }
     }

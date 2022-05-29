@@ -2,16 +2,21 @@
 using namespace std;
  
 int main(){
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
-  string s;
-  cin>>s;
-  sort(s.begin(),s.end());
-  cout <<s<<endl;
-  for(int i=0;i<s.size()-1;i++){
-    if(s[i]=='+') continue;
-    else cout<<s[i]<<"+";
+  int arr[] = {5,3,2,8,9,7};
+  int i=0;
+  int j=0;
+  while(1){
+    if(i == 5) break;
+    if(j>=6){
+      i++;
+      j=i;
+    }
+    if(arr[j] < arr[i]) swap(arr[i], arr[j]);
+    j++;
   }
-  cout<<s[s.size()-1];
-  return 0;
+
+  for(int i=0;i<6;i++){
+    cout <<arr[i];
+  }
 }
+
