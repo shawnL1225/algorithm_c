@@ -1,4 +1,5 @@
-#include<stdio.h>
+#include<bits/stdc++.h> 
+using namespace std;
 int gcd(int n1, int n2) {
     if (n2 != 0)
         return gcd(n2, n1 % n2);
@@ -7,11 +8,11 @@ int gcd(int n1, int n2) {
 }
 int main(){
     int a,b;
-    while(scanf("%d%d",&a,&b)!=EOF){
+    while(cin >> a >> b){
         if (a<b) 
-            printf("%d\n", gcd(b,a));
+           cout << gcd(b,a) << endl;
         else
-            printf("%d\n", gcd(a,b));
+            cout << gcd(a,b) << endl;
     }
         
 }

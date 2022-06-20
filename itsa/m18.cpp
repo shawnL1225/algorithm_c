@@ -1,11 +1,12 @@
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 int main(){
     int n;
-    while(scanf("%d", &n) != EOF){
+    while(cin >> n){
         int ind = 1;
         ind <<= 7;
         for(int i=0;i<8;i++){
-            n&ind? printf("%d", 1): printf("%d", 0);
+            n&ind? cout << 1:cout << 0;
             ind >>= 1;
             
         }

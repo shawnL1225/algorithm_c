@@ -1,4 +1,4 @@
-#include <stdio.h>  
+#include <iostream>  
 int main(){  
     int a,b;  
     while(scanf("%d%d", &a, &b) != EOF){  

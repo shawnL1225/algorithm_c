@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <iostream>
 
 int main(){
     char s[60];

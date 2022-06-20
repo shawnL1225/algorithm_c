@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <iostream>
 
 int rec(int n){
     if(n==0 || n==1) return n+1;
